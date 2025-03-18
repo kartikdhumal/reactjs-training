@@ -1,0 +1,100 @@
+body {
+    background-color: silver;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form {
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #333333;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width:auto;
+    text-align: center;
+
+    h2 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        color: white;
+        margin: 0.5rem 0 0.2rem;
+    }
+
+    input,
+    .submit-btn {
+        width: 100%;
+        padding: 0.7rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .passwordfield{
+        display: flex;
+        width: 100%;
+        border:2px solid red;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .password-strength {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 5px;
+    }
+
+    .strength-bar {
+        height: 100%;
+        width: 0;
+        border-radius: 5px;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .password-rules {
+        list-style: none;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-direction: column;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .password-rules li {
+        font-weight: bold;
+    }
+
+
+
+
+    .submit-btn {
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top:30px;
+        font-weight: bold;
+        transition: background 0.3s;
+
+        &:hover {
+            background: #0056b3;
+        }
+    }
+}

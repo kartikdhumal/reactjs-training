@@ -1,0 +1,91 @@
+$textcolor: rgb(29, 31, 126);
+$completed-color: red;
+$default-text: black;
+$btn-bg: black;
+$btn-hover-border: blue;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: silver;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 35px;
+    font-weight: bold;
+    color: $textcolor;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 400px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 80%;
+
+    .loading-text {
+        font-size:25px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+}
+
+.user-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 320px;
+    text-align: left;
+    border: 1px solid #ddd;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+        margin: 8px 0;
+        font-size: 16px;
+        color: #333;
+
+        &:first-child {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+}
+
+.no-users {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,134 @@
+$textcolor: rgb(29, 31, 126);
+$completed-color: red;
+$default-text: black;
+$btn-bg: black;
+$btn-hover-border: blue;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: silver;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    color: $textcolor;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.operation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    padding: 10px;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input {
+    padding: 10px 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: $btn-bg;
+    box-sizing: border-box;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+
+    &:hover {
+        border: 2px solid $btn-hover-border;
+    }
+}
+
+.mylist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 400px;
+    padding: 10px;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    li {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #f9f9f9;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        transition: 0.3s ease;
+        color: $default-text;
+
+        &:hover {
+            background-color: lightgray;
+        }
+
+        &.completed {
+            text-decoration: line-through;
+            color: $completed-color;
+        }
+
+        .checkbox {
+            transform: scale(1.3);
+        }
+
+        .delete-btn {
+            background-color: crimson;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: darkred;
+            }
+        }
+    }
+}
+
+.no-goals {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin-top: 20px;
+}

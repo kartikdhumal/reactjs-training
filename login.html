@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <h2>Welcome</h2>
+    <form id="loginForm">
+        <label for="email">Enter your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Login</button>
+    </form>
+    <br>
+    <a href="register.html">Go to Register Page</a>
+
+    <script>
+        function getUsers() {
+            let users = document.cookie.split('; ').find(row => row.startsWith('users='));
+            return users ? JSON.parse(decodeURIComponent(users.split('=')[1])) : [];
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let email = document.getElementById('email').value;
+            let users = getUsers();
+
+            let user = users.find(user => user.email === email);
+
+            if (user) {
+                localStorage.setItem('currentUser', email);
+                window.location.href = "welcome.html";
+            } else {
+                alert("User does not exist! Redirecting to Register Page.");
+                window.location.href = "register.html";
+            }
+        });
+    </script>
+</body>
+
+</html>

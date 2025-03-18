@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+
+<body>
+    <h2 id="welcomeMessage">Welcome, Guest!</h2>
+    <button id="logoutBtn">Logout</button>
+
+    <script>
+        function getUsers() {
+            let users = document.cookie.split('; ').find(row => row.startsWith('users='));
+            return users ? JSON.parse(decodeURIComponent(users.split('=')[1])) : [];
+        }
+
+        function getCurrentUser() {
+            let email = localStorage.getItem('currentUser');
+            if (!email) return null;
+            let users = getUsers();
+            return users.find(user => user.email === email);
+        }
+
+        let user = getCurrentUser();
+        if (user) {
+            document.getElementById('welcomeMessage').innerText = `Welcome, ${user.firstName} ${user.lastName}!`;
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            localStorage.removeItem('currentUser');
+            window.location.href = "login.html";
+        });
+
+    </script>
+</body>
+
+</html>

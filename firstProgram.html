@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User System</title>
+</head>
+
+<body>
+
+    <center>
+        <h2>User System</h2>
+
+        <form id="welcomeForm">
+            <label>Enter your Email:</label>
+            <input type="email" id="welcomeEmail" required>
+            <button type="submit">Continue</button>
+        </form>
+
+        <form id="loginForm" style="display:none;">
+            <h3>Login</h3>
+            <label>Email:</label>
+            <input type="email" id="loginEmail" required>
+            <label>Password:</label>
+            <input type="password" id="loginPassword" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <form id="signupForm" style="display:none;">
+            <h3>Signup</h3>
+            <label>First Name:</label>
+            <input type="text" id="firstName" required>
+            <label>Last Name:</label>
+            <input type="text" id="lastName" required>
+            <label>Email:</label>
+            <input type="email" id="signupEmail" required>
+            <label>Password:</label>
+            <input type="password" id="signupPassword" required>
+            <button type="submit">Signup</button>
+        </form>
+    </center>
+
+    <script>
+        let users = [];
+
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + "; path=/" + expires;
+        }
+
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split("=");
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        let loggedInUser = getCookie("loggedInUser");
+        if (loggedInUser) {
+            document.body.innerHTML = `<center><h2>Welcome, ${loggedInUser}!</h2></center>`;
+        }
+
+        document.getElementById("welcomeForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            let email = document.getElementById("welcomeEmail").value;
+            let userExists = users.some(user => user.email === email);
+
+            document.getElementById("welcomeForm").style.display = "none";
+
+            if (userExists) {
+                document.getElementById("loginForm").style.display = "block";
+                document.getElementById("loginEmail").value = email;
+            } else {
+                document.getElementById("signupForm").style.display = "block";
+                document.getElementById("signupEmail").value = email;
+            }
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            let email = document.getElementById("loginEmail").value;
+            let password = document.getElementById("loginPassword").value;
+
+            let user = users.find(user => user.email === email);
+
+            if (user && user.password === password) {
+                setCookie("loggedInUser", user.firstName, 1);
+                alert("Login successful! Welcome " + user.firstName);
+                location.reload();
+            } else {
+                alert("Invalid email or password.");
+            }
+        });
+
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            let user = {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                email: document.getElementById("signupEmail").value,
+                password: document.getElementById("signupPassword").value
+            };
+
+            users.push(user);
+            alert("Signup successful! Please login.");
+            document.getElementById("signupForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("loginEmail").value = user.email;
+        });
+
+    </script>
+
+</body>
+
+</html>

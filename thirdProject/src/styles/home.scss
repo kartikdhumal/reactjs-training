@@ -1,0 +1,52 @@
+$primary-bg: silver;
+$btn-bg: black;
+$btn-color: white;
+$input-width: 300px;
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $primary-bg;
+}
+
+.input {
+    padding: 5px 12px;
+    border-radius: 10px;
+    width: $input-width;
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.count {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn {
+    padding: 10px 12px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: $input-width;
+    background-color: $btn-bg;
+    cursor: pointer;
+    color: $btn-color;
+    align-items: center;
+}
+
+.operation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
