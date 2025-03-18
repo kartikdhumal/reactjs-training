@@ -13,6 +13,7 @@
     "axios": "^1.8.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-loading-skeleton": "^3.5.0",
     "react-router-dom": "^7.3.0",
     "sass": "^1.85.1",
     "sass-embedded": "^1.85.1"
